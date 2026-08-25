@@ -4,93 +4,23 @@
 
     imports = [
       self.nixosModules.FalconHardware
-    ];
-
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-    # Enable automatic garbage collection
-    nix.gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
-    };
-
-
-    # Enable automatic system upgrades
-    system.autoUpgrade = {
-      enable = true;
-      flake = inputs.self.outPath;
-      flags = [
-      "--print-build-logs"
-      ];
-      dates = "daily";
-      randomizedDelaySec = "45min";
-    };
+      self.nixosModules.fonts
+      self.nixosModules.common-settings
+      self.nixosModules.virtualisation
+      self.nixosModules.desktop-apps
+    ];    
 
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.initrd.kernelModules = [ "amdgpu" ];
 
-    # Use latest kernel.
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-
     networking.hostName = "Falcon"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    # Enable networking
-    networking.networkmanager.enable = true;
-
-    # Enable nftables firewall
-    networking.nftables.enable = false; # Enable this if using Waydroid to make it work
-
-    # Set your time zone.
-    time.timeZone = "Europe/London";
-
-    # Select internationalisation properties.
-    i18n.defaultLocale = "en_GB.UTF-8";
-
-    i18n.extraLocaleSettings = {
-      LC_ADDRESS = "en_GB.UTF-8";
-      LC_IDENTIFICATION = "en_GB.UTF-8";
-      LC_MEASUREMENT = "en_GB.UTF-8";
-      LC_MONETARY = "en_GB.UTF-8";
-      LC_NAME = "en_GB.UTF-8";
-      LC_NUMERIC = "en_GB.UTF-8";
-      LC_PAPER = "en_GB.UTF-8";
-      LC_TELEPHONE = "en_GB.UTF-8";
-      LC_TIME = "en_GB.UTF-8";
-    };
-
-    # Enable the X11 windowing system.
-    # You can disable this if you're only using the Wayland session.
-    services.xserver.enable = false;
 
     # Enable the KDE Plasma Desktop Environment.
     services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
-
-    # Configure keymap in X11
-    services.xserver.xkb = {
-      layout = "gb";
-      variant = "";
-    };
-
-    # Configure console keymap
-    console.keyMap = "uk";
-
-    # Enable CUPS to print documents.
-    services.printing.enable = true;
-
-    # Enable GPG
-    programs.gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
 
     # Enable sound with pipewire.
     services.pulseaudio.enable = false;
@@ -110,12 +40,6 @@
     # Enable AMD GPU drivers
     services.xserver.videoDrivers = [ "amdgpu" ];
 
-    # Enable running non-nix executables
-    programs.nix-ld.enable = true;
-
-    # Enable direnv for better development with flakes
-    programs.direnv.enable = true;
-
     # Enable ZSH globally to enable nixpkgs vendor completions
     programs.zsh.enable = true;
     environment.pathsToLink = [ "/share/zsh" ];
@@ -134,30 +58,6 @@
     # Enable automatic login for the user.
     services.displayManager.autoLogin.enable = true;
     services.displayManager.autoLogin.user = "james";
-
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
-
-    # Enable virtualisation
-    programs.virt-manager.enable = true;
-    virtualisation.libvirtd.enable = true;
-    virtualisation.spiceUSBRedirection.enable = true;
-
-    virtualisation.docker = {
-      # Disable the system wide Docker daemon
-      enable = false;
-
-      rootless = {
-      enable = true;
-      setSocketVariable = true;
-      };
-    };
-
-    # Enable portals
-    xdg.portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-    };
 
     # Enable WiVRn for VR/XR
     services.wivrn = {
@@ -190,8 +90,6 @@
     programs.kdeconnect.enable = true;
 
     environment.systemPackages = with pkgs; [
-      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-      thunderbird
       vesktop
       mangohud
       heroic
@@ -203,8 +101,6 @@
       eden
       dolphin-emu
       inputs.freegosy.packages.${pkgs.stdenv.hostPlatform.system}.default
-      obsidian
-      nextcloud-client
       zapzap
       cinny-desktop
       vscodium
@@ -217,10 +113,8 @@
       inkscape
       krita
       pixieditor
-      mpv
       plezy
       feishin
-      yt-dlp
       ungoogled-chromium
       librewolf
       freecad
@@ -233,6 +127,7 @@
       minicom
       rkdeveloptool
       android-tools
+      yt-dlp
       zip
       # OBS and plugins
       (pkgs.wrapOBS {
@@ -247,11 +142,6 @@
       kdePackages.partitionmanager
       # Libs
       icu
-    ];
-
-    fonts.packages = with pkgs; [
-      lexend
-      carlito
     ];
 
     # This value determines the NixOS release from which the default
