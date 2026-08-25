@@ -1,6 +1,6 @@
 {self, inputs, ...}: {
 
-  flake.nixosConfigurations.StorkHardware = { config, lib, pkgs, modulesPath, ... }: {
+  flake.nixosModules.StorkHardware = { config, lib, pkgs, modulesPath, ... }: {
 
     imports = [
       (modulesPath + "/installer/scan/not-detected.nix")
