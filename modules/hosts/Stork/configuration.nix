@@ -17,6 +17,9 @@
     networking.hostName = "Stork"; # Define your hostname.
     networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
+    # Enable Tailscale
+    services.tailscale.enable = true;
+
     # Enable the KDE Plasma Desktop Environment.
     services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
@@ -34,6 +37,11 @@
       description = "James";
       extraGroups = [ "networkmanager" "wheel" "libvirtd" "adbusers" "dialout"];
       packages = with pkgs; [ ];
+    };
+
+    hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = false;
     };
 
     # Enable xone gamepad driver
