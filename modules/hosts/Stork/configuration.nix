@@ -24,6 +24,9 @@
     services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
 
+    # Disable using fingerprint to login to the system (causes issues with DMs freezing & KDE Wallet)
+    security.pam.services.login.fprintAuth = false;
+
     # Enable ZSH globally to enable nixpkgs vendor completions
     programs.zsh.enable = true;
     environment.pathsToLink = [ "/share/zsh" ];
