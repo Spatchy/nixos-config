@@ -84,7 +84,7 @@
       inputs.fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher
       moonlight-qt
       bs-manager
-      inputs.amethyst-mod-manager.packages.${pkgs.stdenv.hostPlatform.system}.amethyst-mod-manager
+      inputs.amethyst-mod-manager.packages.${pkgs.stdenv.hostPlatform.system}.default
       pakku
       eden
       dolphin-emu
@@ -93,9 +93,6 @@
       cinny-desktop
       vscodium
       arduino-ide
-      libreoffice-fresh
-      hunspell
-      hunspellDicts.en-gb-ise
       gimp
       tenacity
       inkscape

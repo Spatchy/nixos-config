@@ -8,7 +8,7 @@
     };
 
     amethyst-mod-manager = {
-      url = "github:RoGreat/nur-packages";
+      url = "github:ChrisDKN/Amethyst-Mod-Manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

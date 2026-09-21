@@ -7,6 +7,11 @@
       obsidian
       nextcloud-client
       mpv
+      # LibreOffice with spellcheck
+      libreoffice-stable
+      hunspell
+      hunspellDicts.en_GB-ise
+      hyphenDicts.en_GB
     ];
   };
 }
