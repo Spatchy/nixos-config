@@ -8,6 +8,7 @@
       self.nixosModules.common-settings
       self.nixosModules.virtualisation
       self.nixosModules.desktop-apps
+      self.nixosModules.blender
     ];    
 
     # Bootloader.
