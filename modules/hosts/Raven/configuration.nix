@@ -48,6 +48,12 @@
       packages = with pkgs; [ ];
     };
 
+    # Disable portals
+    xdg.portal = {
+      enable = false;
+      xdgOpenUsePortal = false;
+    };
+
     # Enable xone gamepad driver
     hardware.xone.enable = true;
 
