@@ -24,7 +24,7 @@
     services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
 
     hardware.nvidia.modesetting.enable = true;
-    hardware.nvidia.prime.offload.enable
+    hardware.nvidia.prime.offload.enable = true;
 
     hardware.nvidia.prime = {
       amdgpuBusId = "PCI:0@1:0:0";
