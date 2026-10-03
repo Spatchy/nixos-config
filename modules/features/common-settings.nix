@@ -65,12 +65,6 @@
     # Enable direnv for better development with flakes
     programs.direnv.enable = true;
 
-    # Enable portals
-    xdg.portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-    };
-
     # Enable sound with pipewire.
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;

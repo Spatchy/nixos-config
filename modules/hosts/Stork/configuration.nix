@@ -6,6 +6,7 @@
       self.nixosModules.StorkHardware
       self.nixosModules.fonts
       self.nixosModules.common-settings
+      self.nixosModules.common-settings-de-only
       self.nixosModules.virtualisation
       self.nixosModules.desktop-apps
     ];    
