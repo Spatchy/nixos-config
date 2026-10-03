@@ -17,7 +17,7 @@
 
     # Enable the Cage kiosk.
     services.cage.enable = true;
-    services.cage.program = "${pkgs.pegasus-frontend}/bin/pegasus-fe";
+    services.cage.program = "${pkgs.kitty}/bin/kitty";
     services.cage.user = "james";
 
     # Enable and configure GPU drivers
@@ -57,6 +57,7 @@
     programs.kdeconnect.enable = true;
 
     environment.systemPackages = with pkgs; [
+      kitty
       pegasus-frontend
       heroic
       inputs.fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher
