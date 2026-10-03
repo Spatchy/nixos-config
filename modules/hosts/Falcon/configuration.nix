@@ -4,6 +4,7 @@
 
     imports = [
       self.nixosModules.FalconHardware
+      self.nixosModules.quiet-boot-sequence
       self.nixosModules.fonts
       self.nixosModules.common-settings
       self.nixosModules.common-settings-de-only

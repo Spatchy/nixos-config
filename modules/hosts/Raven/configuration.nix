@@ -6,6 +6,8 @@
       self.nixosModules.RavenHardware
       self.nixosModules.fonts
       self.nixosModules.common-settings
+      self.nixosModules.quiet-boot-sequence
+      self.nixosModules.gamescope
     ];    
 
     # Bootloader.
@@ -14,11 +16,6 @@
 
     networking.hostName = "Raven"; # Define your hostname.
     networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Enable the Cage kiosk.
-    services.cage.enable = true;
-    services.cage.program = "${pkgs.kitty}/bin/kitty";
-    services.cage.user = "james";
 
     # Enable and configure GPU drivers
     services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
@@ -53,12 +50,9 @@
 
     # Enable programs
     programs.steam.enable = true;
-    programs.steam.gamescopeSession.enable = true;
     programs.kdeconnect.enable = true;
 
     environment.systemPackages = with pkgs; [
-      kitty
-      pegasus-frontend
       heroic
       inputs.fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher
       moonlight-qt
