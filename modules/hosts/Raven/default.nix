@@ -1,8 +1,8 @@
 {self, inputs, ...}: {
 
-  flake.nixosConfigurations.Falcon = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.Raven = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.FalconConfig
+      self.nixosModules.RavenConfig
     ];
   };
 }
