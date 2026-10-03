@@ -22,6 +22,7 @@
 
     # Enable and configure GPU drivers
     services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
+    hardware.nvidia.open = true;
 
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.prime.offload.enable = true;
