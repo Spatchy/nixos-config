@@ -1,6 +1,6 @@
 {self, inputs, ...}: {
 
-  flake.nixosModules.gamescope = {
+  flake.nixosModules.gamescope = { pkgs, lib, ... }: {
     programs = {
       gamescope = {
         enable = true;
