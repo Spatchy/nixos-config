@@ -1,6 +1,6 @@
 {self, inputs, ...}: {
 
-  flake.nixosModules.FalconConfig = { pkgs, lib, ... }: {
+  flake.nixosModules.RavenConfig = { pkgs, lib, ... }: {
 
     imports = [
       self.nixosModules.RavenHardware
