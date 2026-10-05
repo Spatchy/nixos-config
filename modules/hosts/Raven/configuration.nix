@@ -7,7 +7,7 @@
       self.nixosModules.fonts
       self.nixosModules.common-settings
       self.nixosModules.quiet-boot-sequence
-      self.nixosModules.gamescope
+      self.nixosModules.plasma-bigscreen
     ];    
 
     # Bootloader.
@@ -50,7 +50,6 @@
 
     # Enable programs
     programs.steam.enable = true;
-    programs.kdeconnect.enable = true;
 
     environment.systemPackages = with pkgs; [
       heroic
