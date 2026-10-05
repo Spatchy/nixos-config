@@ -29,12 +29,28 @@
       nvidiaBusId = "PCI:0@4:0:0";
     };
 
-    # offload everything to the dedicated GPU
+    # Offload everything to the dedicated GPU
     environment.sessionVariables = {
       __NV_PRIME_RENDER_OFFLOAD=1;
       __NV_PRIME_RENDER_OFFLOAD_PROVIDER="NVIDIA-G0";
       __GLX_VENDOR_LIBRARY_NAME="nvidia";
       __VK_LAYER_NV_optimus="NVIDIA_only";
+    };
+
+    # Disable lid switch detection and sleep
+    services.logind.settings.Login = {
+      HandleLidSwitch = "ignore";
+      HandleLidSwitchDocked = "ignore";
+      HandleLidSwitchExternalPower = "ignore";
+      HandlePowerKey = "poweroff";
+      IdleAction = "ignore";
+    };
+
+    systemd.targets = {
+      sleep.enable = false;
+      suspend.enable = false;
+      hibernate.enable = false;
+      hybrid-sleep.enable = false;
     };
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
