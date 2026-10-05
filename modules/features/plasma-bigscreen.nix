@@ -5,12 +5,15 @@
       sddm = {
         enable = true;
         wayland.enable = true;
+        theme = “breeze”;
       };
 
       sessionPackages = [ pkgs.kdePackages.plasma-bigscreen ];
       autoLogin.enable = true;
       autoLogin.user = "james";
     };
+
+    xdg.portal.configPackages = [ pkgs.kdePackages.plasma-bigscreen ];
 
     programs.kdeconnect.enable = true;
 
