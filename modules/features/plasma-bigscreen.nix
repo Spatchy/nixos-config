@@ -4,7 +4,7 @@
     services.displayManager = {
       sddm = {
         enable = true;
-        wayland = true;
+        wayland.enable = true;
       };
 
       sessionPackages = [ pkgs.kdePackages.plasma-bigscreen ];
