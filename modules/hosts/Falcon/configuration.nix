@@ -81,7 +81,7 @@
     programs.kdeconnect.enable = true;
 
     environment.systemPackages = with pkgs; [
-      vesktop
+      equibop
       mangohud
       heroic
       inputs.fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher
@@ -107,7 +107,6 @@
       librewolf
       freecad
       orca-slicer
-      newsflash
       rpi-imager
       # Shell utils
       pv

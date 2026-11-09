@@ -54,7 +54,7 @@
     programs.kdeconnect.enable = true;
 
     environment.systemPackages = with pkgs; [
-      vesktop
+      equibop
       moonlight-qt
       zapzap
       vscodium
